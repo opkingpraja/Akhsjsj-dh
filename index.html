@@ -1,120 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hacking UI Prank</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Courier New', monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-    h1 {
-      color: red;
-      margin-bottom: 40px;
-    }
-    #hack-screen {
-      display: none;
-      width: 90%;
-      height: 60%;
-      background: black;
-      border: 1px solid #00ff00;
-      padding: 10px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      font-size: 14px;
-    }
-    #final-msg {
-      display: none;
-      color: red;
-      font-size: 28px;
-      margin-top: 20px;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.2; }
-      100% { opacity: 1; }
-    }
-    #btn {
-      padding: 12px 24px;
-      background: transparent;
-      color: red;
-      border: 2px solid red;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    #btn:active {
-      background-color: red;
-      color: black;
-    }
-  </style>
+<title>Upload Image</title>
 </head>
 <body>
-  <h1>⚠️ Don't Click This Button ⚠️</h1>
-  <button id="btn">Don't Click</button>
-  <div id="hack-screen"></div>
-  <div id="final-msg">💀 Your Device Has Been Hacked! 💀 <span style="color:green"> Mr Anand Sharma</span></div>
 
-  <script>
-    const btn = document.getElementById("btn");
-    const hackScreen = document.getElementById("hack-screen");
-    const finalMsg = document.getElementById("final-msg");
+<h2>Upload Image</h2>
 
-    const fakeCommands = [
-      "Accessing system32...",
-      "Bypassing firewall...",
-      "Cracking passwords...",
-      "Uploading trojan...",
-      "Stealing files...",
-      "Access granted to C:/Drive",
-      "Deleting system logs...",
-      "Tracking location...",
-      "Activating camera...",
-      "Downloading contacts...",
-      "Injecting payload...",
-      "Encrypting data...",
-      "Removing antivirus...",
-      "Root access: success",
-      "Transferring data to server...",
-      "MAC Address Found...",
-      "Phone number linked...",
-      "Starting remote control session...",
-      "youtube information...",
-      "WhatsApp information...",
-      "contact information...root.&.papa"
-    ];
+<form action="/upload" method="POST" enctype="multipart/form-data">
 
-    function getRandomCommand() {
-      return fakeCommands[Math.floor(Math.random() * fakeCommands.length)];
-    }
+<input type="file" name="image" required>
 
-    btn.addEventListener("click", () => {
-      btn.style.display = "none";
-      hackScreen.style.display = "block";
+<br><br>
 
-      let time = 0;
-      const interval = setInterval(() => {
-        const newLine = `[${new Date().toLocaleTimeString()}] ${getRandomCommand()}`;
-        hackScreen.textContent += newLine + "\n";
-        hackScreen.scrollTop = hackScreen.scrollHeight;
-        time += 0.5;
-        if (time >=18) {
-          clearInterval(interval);
-          hackScreen.style.display = "none";
-          finalMsg.style.display = "block";
-        }
-      }, 700);
-    }); 
-  </script>
+<button type="submit">Upload</button>
+
+</form>
+
 </body>
-  </html>
+</html>
